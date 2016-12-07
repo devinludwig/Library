@@ -11,8 +11,8 @@ set(:show_exceptions, false)
 
 RSpec.configure do |config|
   config.after(:each) do
-    DB.exec('DELETE FROM books *;')
-    DB.exec('DELETE FROM patrons *;')
-    DB.exec('DELETE FROM authors *;')
+    DB.exec('DELETE FROM book *;')
+    DB.exec('DELETE FROM patron *;')
+    DB.exec('DELETE FROM author *;')
   end
 end

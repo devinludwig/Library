@@ -1,7 +1,23 @@
 require('spec_helper')
 
 describe(Book) do
-    describe(".all") do
+  describe(".search") do
+    it('returns an array of books whose name include an argument') do
+      book = Book.new({:title => "Necronomicon", :id => nil})
+      book.save()
+      expect(Book.search("necro")).to(eq([book]))
+    end
+  end
+
+  describe(".find") do
+    it('returns a book given their id') do
+      book = Book.new({:title => "Necronomicon", :id => nil})
+      book.save()
+      expect(Book.find(book.id())).to(eq(book))
+    end
+  end
+
+  describe(".all") do
     it("starts off with no books") do
       expect(Book.all()).to(eq([]))
     end

@@ -1,0 +1,28 @@
+<h1>Librarian Page</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Patrons:</h2>
+    <form action="/patron_search_result" method="post">
+      <input type="text" name="patron_search" placeholder="Search Patrons">
+      <button type="submit" name="patron_search">Search Patrons</button>
+    </form>
+    <ul>
+      <% @patrons.each() do |patron| %>
+        <li><a href="/patron/<%= patron.id() %>"><%= patron.name() %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h2>Books:</h2>
+    <form action="/book_search_result" method="post">
+      <input type="text" name="book_search" placeholder="Search Books">
+      <button type="submit" name="book_search">Search Books</button>
+    </form>
+    <ul>
+      <% @books.each() do |book| %>
+        <li><a href="/book/<%= book.id() %>"><%= book.name() %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

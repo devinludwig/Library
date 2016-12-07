@@ -1,0 +1,10 @@
+<h2>"<%= @input %>" returned <%= @results.length %> results:</h2>
+<br>
+<ul>
+  <% @results.each() do |result| %>
+  <li><a href="/patrons/<%= result.id() %>"><%= result.name() %></a></li>
+  <% end %>
+</ul>
+<br>
+<br>
+<a href="/admin">Back</a>

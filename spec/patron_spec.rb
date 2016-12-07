@@ -1,7 +1,31 @@
 require('spec_helper')
 
 describe(Patron) do
-    describe(".all") do
+  describe(".search") do
+    it('returns an array of patrons whose name include an argument') do
+      patron = Patron.new({:name => "Blob Trapezoid", :id => nil})
+      patron.save()
+      expect(Patron.search("zoid")).to(eq([patron]))
+    end
+  end
+
+  describe(".find") do
+    it('returns a patron given their id') do
+      patron = Patron.new({:name => "Blob Trapezoid", :id => nil})
+      patron.save()
+      expect(Patron.find(patron.id())).to(eq(patron))
+    end
+  end
+
+  describe(".find_by_name") do
+    it('returns a patron given their name') do
+      patron = Patron.new({:name => "Blob Trapezoid", :id => nil})
+      patron.save()
+      expect(Patron.find_by_name("Blob Trapezoid")).to(eq(patron))
+    end
+  end
+
+  describe(".all") do
     it("starts off with no patrons") do
       expect(Patron.all()).to(eq([]))
     end
