@@ -30,6 +30,8 @@ get('/admin') do
 end
 
 post('/admin') do
+  @patrons = Patron.all()
+  @books = Book.all
   @author_added = params.fetch('author')
   @title_added = params.fetch('title')
   new_book = Book.new({:title => @title_added, :id => nil})

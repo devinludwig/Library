@@ -22,7 +22,7 @@
     </form>
     <ul>
       <% @books.each() do |book| %>
-        <li><a href="/book/<%= book.id() %>"><%= book.name() %></a></li>
+        <li><a href="/book/<%= book.id() %>"><%= book.title() %></a></li>
       <% end %>
     </ul>
   </div>
