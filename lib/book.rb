@@ -6,6 +6,11 @@ class Book
     @id = attributes.fetch(:id)
   end
 
+  define_method(:link) do |author|
+    @author_id = author.id()
+    DB.exec("INSERT INTO authorship (book_id, author_id) VALUES (#{@id}, #{@author_id});")
+  end
+
   define_singleton_method(:all) do
     returned_books = DB.exec("SELECT * FROM book;")
     books = []

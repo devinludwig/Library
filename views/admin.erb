@@ -18,6 +18,7 @@
     <form action="/book_search_result" method="post">
       <input type="text" name="book_search" placeholder="Search Books">
       <button type="submit" name="book_search">Search Books</button>
+      <a href="/add_new_book"><button type="button" name="add_book">Add New Book</button></a>
     </form>
     <ul>
       <% @books.each() do |book| %>

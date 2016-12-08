@@ -29,8 +29,23 @@ get('/admin') do
   erb(:admin)
 end
 
+post('/admin') do
+  @author_added = params.fetch('author')
+  @title_added = params.fetch('title')
+  new_book = Book.new({:title => @title_added, :id => nil})
+  new_book.save()
+  new_author = Author.new({:name => @author_added, :id => nil})
+  new_author.save()
+  new_book.link(new_author)
+  erb(:admin)
+end
+
 post('/patron_search_result') do
   @input = params.fetch('patron_search')
   @results = Patron.search(@input)
   erb(:patron_search_result)
+end
+
+get('/add_new_book') do
+  erb(:add_new_book)
 end

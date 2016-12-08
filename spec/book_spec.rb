@@ -9,6 +9,18 @@ describe(Book) do
     end
   end
 
+  describe(".link") do
+    it('creates a join entry in authorship table linking book with argument author') do
+      book = Book.new({:title => "Necronomicon", :id => nil})
+      book.save()
+      author = Author.new({:name => "Lucifer", :id => nil})
+      author.save()
+      Book.link(author)
+      fetched_book_id = (DB.exec("SELECT * FROM authorship;"))[0].fetch('book_id')
+      expect(fetched_book_id).to(eq(fixnum))
+    end
+  end
+
   describe(".find") do
     it('returns a book given their id') do
       book = Book.new({:title => "Necronomicon", :id => nil})
